@@ -86,8 +86,8 @@ class Box(gym.spaces.Box, MineRLSpace):
     def __init__(self, *args, normalizer_scale='linear', **kwargs):
         super(Box, self).__init__(*args, **kwargs)
 
-        self._flat_low = self.low.flatten().astype(np.float64)
-        self._flat_high = self.high.flatten().astype(np.float64)
+        self._flat_low = self.low.flatten().astype(np.float32)
+        self._flat_high = self.high.flatten().astype(np.float32)
 
         if normalizer_scale == 'log':
             self.max_log = np.log(1 + (self._flat_high - self._flat_low))
